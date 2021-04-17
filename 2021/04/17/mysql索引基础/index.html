@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, 龙哥的博客">
+    <meta name="keywords" content="龙哥的博客">
     <meta name="description" content="武汉大学 | 程序猿">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | 龙哥的博客</title>
+    <title>龙哥的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -443,7 +443,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-10
+                    2021-04-17
                 </div>
                 
 
@@ -467,19 +467,47 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <h2 id="索引常见模型"><a href="#索引常见模型" class="headerlink" title="索引常见模型"></a>索引常见模型</h2><h3 id="三种数据结构"><a href="#三种数据结构" class="headerlink" title="三种数据结构"></a>三种数据结构</h3><ul>
+<li>三种数据结构：哈希表，有序数组，搜索树；</li>
+<li>哈希表结构适用于等值查询的场景</li>
+<li>有序数组适用于静态存储引擎，查询多，改动少；</li>
+<li>二叉搜索树:查找 O(logN)，插入也是O(logN)；</li>
+</ul>
+<h3 id="Innodb的索引模型"><a href="#Innodb的索引模型" class="headerlink" title="Innodb的索引模型"></a>Innodb的索引模型</h3><p>1.每一个索引在 innodb里对应一棵B+树；</p>
+<p>2.根据叶子节点内容分：主键索引和非主键索引：</p>
+<ul>
+<li>主键索引：叶子节点存整行数据；</li>
+<li>非主键索引：叶子节点存主键的值；</li>
+</ul>
+<p>3.<strong>提问：基于主键索引和普通索引的查询有什么区别？</strong></p>
+<ul>
+<li>查询语句：<code>select * from T where ID = 1</code>主键查询方式，只搜索ID这棵B+树；</li>
+<li>查询语句：<code>select * from T where k = 1</code>，普通索引方式，先找k索引B+树，找到对应的ID，再找ID索引树。<strong>回表</strong>； </li>
+</ul>
+<p>4.普通索引的查询会多扫描一棵索引树；</p>
+<p>5.Innodb是一棵N叉树，N的值是1200；</p>
+<p>6.提问：一张没有主键的表，只有1个普通索引，查询时怎么回表？</p>
+<p>   Innodb默认会将RowId作为主键；</p>
+<p>7.思考题：<code>老师你好：之前看过一遍文章，一直有疑惑：一个innoDB引擎的表，数据量非常大，根据二级索引搜索会比主键搜索快，文章阐述的原因是主键索引和数据行在一起，非常大搜索慢，我的疑惑是：通过普通索引找到主键ID后，同样要跑一遍主键索引，还望老师解惑。。。</code></p>
+<ol start="8">
+<li>B+树的插入可能会引起数据页的分裂，删除可能会引起数据页的合并，二者都是比较重的IO消耗，所以比较好的方式是顺序插入数据，这也是我们一般使用自增主键的原因之一。</li>
+</ol>
+<h3 id="覆盖索引"><a href="#覆盖索引" class="headerlink" title="覆盖索引"></a>覆盖索引</h3><p>1.回表：回到主索引树搜索的过程，普通索引的查找就需要；</p>
+<p>2.示例：<code>select ID from T where k between 3 and 5</code>，需要查找的ID在k索引树上已经存在了，可以直接获取结果，不需要回表。简而言之，在<strong>这个查询里索引k已经覆盖了查询需求，称为覆盖索引</strong></p>
+<p>3.<strong>重点：覆盖索引可以减少树的搜索次数，提升查询性能，所以使用覆盖索引是常用的性能优化手段</strong>；</p>
+<p>4.思考通过身份证号去查询姓名，在身份证号建立索引 和 （身份证号、姓名）联合索引对比？</p>
+<p>   使用联合索引可用到覆盖索引，不需要回表查，减少了执行时间</p>
+<h3 id="最左前缀原则"><a href="#最左前缀原则" class="headerlink" title="最左前缀原则"></a>最左前缀原则</h3><p>1.B+ 树这种索引结构，可以利用索引的“最左前缀”，来定位记录，最左前缀可以是联合索引的最左N个字段，也可以是字符串索引的最左M个字符；</p>
+<p>示例，查询（姓名，年龄）联合索引的表，找已张开头的数据<code>where name like &#39;张%&#39;</code>索引仍然有效</p>
+<p>2.联合索引内的字段顺序如何安排？</p>
+<p>   <strong>重点：第一原则，如果通过调整顺序，可以少维护一个索引，那么这个顺序就是优先考虑的</strong>，示例（a, b）联合索引，则不需要在a上建立索引了。</p>
+<p>3.MySQL5.6之后引入了<strong>索引下推</strong>，在索引遍历过程中，对索引包含的字段进行判断，过滤掉不满足条件的记录，减少回表次数；</p>
+<p>4.提问，什么情况下需要重建索引？</p>
+<p>  索引因为删除，或者页分裂等原因，使得数据页有空洞，重建索引会创建新的索引，把数据按顺序插入，使得页面利用率最高。语句：<code>Alter table T engine=Innodb</code></p>
+<p>示例：<code>让我想到了我们线上的一个表, 记录日志用的, 会定期删除过早之前的数据. 最后这个表实际内容的大小才10G, 而他的索引却有30G. 在阿里云控制面板上看,就是占了40G空间. 这可花的是真金白银啊.后来了解到是 InnoDB 这种引擎导致的,虽然删除了表的部分记录,但是它的索引还在, 并未释放.只能是重新建表才能重建索引.</code></p>
+<h3 id="提问F-amp-Q"><a href="#提问F-amp-Q" class="headerlink" title="提问F&amp;Q"></a>提问F&amp;Q</h3><p>1.联合索引的技巧？（覆盖索引，最左前缀原则，索引下推）</p>
+<p>2.<strong>好问题：</strong>老师，下面两条语句有什么区别，为什么都提倡使用2:<br>   <code>1.select * from T where k in(1,2,3,4,5)</code><br>   <code>2.select * from T where k between 1 and 5</code></p>
+<p>   第1个树搜索5次，第2个树搜索1次。</p>
 
                 
             </div>
@@ -506,7 +534,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://longbig.github.io/2021/04/10/hello-world/">https://longbig.github.io/2021/04/10/hello-world/</a>
+                    <a href="https://longbig.github.io/2021/04/17/mysql%E7%B4%A2%E5%BC%95%E5%9F%BA%E7%A1%80/">https://longbig.github.io/2021/04/17/mysql%E7%B4%A2%E5%BC%95%E5%9F%BA%E7%A1%80/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -711,9 +739,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/04/17/mysql%E7%B4%A2%E5%BC%95%E5%9F%BA%E7%A1%80/">
                     <div class="card-image">
@@ -731,9 +760,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -742,6 +771,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -749,7 +779,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2021/04/10/hello-world/">
@@ -779,7 +809,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
