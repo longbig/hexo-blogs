@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="innodb关键特性, 龙哥的博客">
+    <meta name="keywords" content="java8的5种线程池, 龙哥的博客">
     <meta name="description" content="武汉大学 | 程序猿">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>innodb关键特性 | 龙哥的博客</title>
+    <title>java8的5种线程池 | 龙哥的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">innodb关键特性</h1>
+                    <h1 class="description center-align post-title">java8的5种线程池</h1>
                 </div>
             </div>
         </div>
@@ -443,7 +443,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-27
+                    2021-05-08
                 </div>
                 
 
@@ -467,55 +467,95 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Innodb关键特性"><a href="#Innodb关键特性" class="headerlink" title="Innodb关键特性"></a>Innodb关键特性</h1><p>[toc]</p>
-<h2 id="插入缓冲"><a href="#插入缓冲" class="headerlink" title="插入缓冲"></a>插入缓冲</h2><h3 id="Insert-Buffer"><a href="#Insert-Buffer" class="headerlink" title="Insert Buffer"></a>Insert Buffer</h3><p>概念：对于<strong>非聚集索引的插入或更新操作</strong>，先判断插入的非聚集索引页是否在缓冲池中，在则直接插入。不在，先放入到insert buffer对象中，在一定情况下对insert buffer和辅助索引页子节点merge操作。 （可将多个插入合并到一个操作中，大大提高了对非聚集索引的插入性能）</p>
-<p>使用需要满足2个条件：</p>
+                <h1 id="JAVA8的5种线程池"><a href="#JAVA8的5种线程池" class="headerlink" title="JAVA8的5种线程池"></a>JAVA8的5种线程池</h1><p>[toc]</p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>JAVA1.8版本加了一种newWorkStealingPool，现在共有5种线程池：newSingleThreadPool、newFixedThreadPool、newCachedThreadPool、newScheduledThreadPool、newWorkStealingPool。</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://vvcat.blog.csdn.net/article/details/91409942">https://vvcat.blog.csdn.net/article/details/91409942</a></p>
+<p><strong>线程池的创建步骤：</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//创建单核心的线程池</span>
+<span class="token class-name">ExecutorService</span> executorService <span class="token operator">=</span> <span class="token class-name">Executors</span><span class="token punctuation">.</span><span class="token function">newSingleThreadExecutor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//创建固定核心数的线程池，这里核心数 = 2</span>
+<span class="token class-name">ExecutorService</span> executorService <span class="token operator">=</span> <span class="token class-name">Executors</span><span class="token punctuation">.</span><span class="token function">newFixedThreadPool</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//创建一个按照计划规定执行的线程池，这里核心数 = 2</span>
+<span class="token class-name">ExecutorService</span> executorService <span class="token operator">=</span> <span class="token class-name">Executors</span><span class="token punctuation">.</span><span class="token function">newScheduledThreadPool</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//创建一个自动增长的线程池</span>
+<span class="token class-name">ExecutorService</span> executorService <span class="token operator">=</span> <span class="token class-name">Executors</span><span class="token punctuation">.</span><span class="token function">newCachedThreadPool</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//创建一个具有抢占式操作的线程池</span>
+<span class="token class-name">ExecutorService</span> executorService <span class="token operator">=</span> <span class="token class-name">Executors</span><span class="token punctuation">.</span><span class="token function">newWorkStealingPool</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>线程池的参数：</strong></p>
 <ul>
-<li>索引是辅助索引</li>
-<li>索引不是唯一的 （因为insert buffer不查找索引页判断插入记录唯一性）</li>
+<li><strong>corePoolSize：核心线程数</strong>，当初始化线程池时，会创建核心线程进入等待状态，即使它是空闲的，核心线程也不会被摧毁，从而降低了任务一来时要创建新线程的时间和性能开销；</li>
+<li><strong>maximumPoolSize：最大线程数</strong>，核心线程数都被用完了，那只能重新创建新的线程来执行任务，但是前提是不能超过最大线程数量；</li>
+<li><strong>keepAliveTime：线程存活时间</strong>，除核心线程外被创建的线程可以存活多久，即这些线程完成任务，后面处于空闲状态，一定时间后被销毁；</li>
+<li>unit：存活时间单位；</li>
+<li><strong>workQueue：任务的阻塞队列</strong>，未被执行的任务需要进入队列中排队，队列是FIFO的，等到线程空闲时，再取出里面的任务；</li>
 </ul>
-<p>通过<code>show engine innodb status</code>查看Innodb引擎状态，找到<code>INSERT BUFFER AND ADAPTIVE HASH INDEX</code></p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">-------------------------------------
-INSERT BUFFER AND ADAPTIVE HASH INDEX
--------------------------------------
-Ibuf: size 1, free list len 0, seg size 2, 0 merges
-merged operations:
- insert 0, delete mark 0, delete 0
-discarded operations:
- insert 0, delete mark 0, delete 0
-Hash table size 138389, node heap has 0 buffer(s)
-Hash table size 138389, node heap has 1 buffer(s)
-Hash table size 138389, node heap has 0 buffer(s)
-Hash table size 138389, node heap has 1 buffer(s)
-Hash table size 138389, node heap has 1 buffer(s)
-Hash table size 138389, node heap has 1 buffer(s)
-Hash table size 138389, node heap has 1 buffer(s)
-Hash table size 138389, node heap has 76 buffer(s)
-0.00 hash searches&#x2F;s, 0.00 non-hash searches&#x2F;s
----<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="newSingleThreadPool"><a href="#newSingleThreadPool" class="headerlink" title="newSingleThreadPool"></a>newSingleThreadPool</h2><p>单核心线程池，最大线程数只会有一个，时间为0表示无限的生命，不会被销毁；</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">ExecutorService</span> <span class="token function">newSingleThreadExecutor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">FinalizableDelegatedExecutorService</span>
+        <span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ThreadPoolExecutor</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span>
+                                <span class="token number">0L</span><span class="token punctuation">,</span> <span class="token class-name">TimeUnit</span><span class="token punctuation">.</span>MILLISECONDS<span class="token punctuation">,</span>
+                                <span class="token keyword">new</span> <span class="token class-name">LinkedBlockingQueue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Runnable</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
-<h3 id="change-buffer"><a href="#change-buffer" class="headerlink" title="change buffer"></a>change buffer</h3><p>Innodb可对DML操作进行缓冲，包括：INSERT、DELETE、UPDATE，对应<code>insert buffer</code>、<code>delete buffer</code>、<code>purge buffer</code>；</p>
-<p>适用对象是：非唯一的辅助索引；</p>
-<p>参数<code>innodb_change_buffering</code>可设置缓冲类型：insert、delete、purges、changes、all等等；</p>
-<p>对一条记录的UPDATE过程：</p>
-<ul>
-<li>先将记录标记已删除  （对应delete buffer，状态的delete mark）</li>
-<li>真正删除记录  （对应purge buffer，状态的delete）</li>
-</ul>
-<h2 id="两次写"><a href="#两次写" class="headerlink" title="两次写"></a>两次写</h2><p>doublewrite用于提升Innodb的数据页可靠性。</p>
-<p>在应用重做日志前，用户需要一个页的副本，当写入失效时，先通过页的副本还原该页，再进行重做，即doublewrite；</p>
-<p><strong>写过程</strong>：在对缓冲池刷脏页时，不是直接写磁盘，而是将脏页复制到内存中的doublewrite buffer，之后doublewrite buffer分2次，每次1MB顺序写入共享表空间的物理磁盘上，最后同步磁盘。</p>
-<h2 id="自适应哈希索引"><a href="#自适应哈希索引" class="headerlink" title="自适应哈希索引"></a>自适应哈希索引</h2><p>Innodb会监控表上个索引页的查询，如果观察到建立哈希索引可以提升性能，Innodb会自己建立哈希索引，即自适应哈希索引（Adaptive Hash Index，AHI）；</p>
-<p>使用要求：</p>
-<ul>
-<li>等值查询</li>
-<li>以该模式访问100次</li>
-<li>页通过该模式访问了N次，N=页中记录/16</li>
-</ul>
-<h2 id="异步IO"><a href="#异步IO" class="headerlink" title="异步IO"></a>异步IO</h2><p>AIO，用户发出一个IO请求后，可直接发下一个IO请求，不用等待响应。AIO还可将多个IO请求merge为1个IO，提高了IOPS性能；</p>
-<h2 id="刷新邻接页"><a href="#刷新邻接页" class="headerlink" title="刷新邻接页"></a>刷新邻接页</h2><p>刷脏页时，Innodb检测该页所在区（extent）的所有页，如果是脏页，一并刷新。固态硬盘已经有很强的IO能力，可关闭该功能；</p>
+<h2 id="newFixedThreadPool"><a href="#newFixedThreadPool" class="headerlink" title="newFixedThreadPool"></a>newFixedThreadPool</h2><p>核心线程数固定，需要在创建时传入，并且核心线程数就是最大线程数，存活时间无限，不会销毁；</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">ExecutorService</span> <span class="token function">newFixedThreadPool</span><span class="token punctuation">(</span><span class="token keyword">int</span> nThreads<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ThreadPoolExecutor</span><span class="token punctuation">(</span>nThreads<span class="token punctuation">,</span> nThreads<span class="token punctuation">,</span>
+                                  <span class="token number">0L</span><span class="token punctuation">,</span> <span class="token class-name">TimeUnit</span><span class="token punctuation">.</span>MILLISECONDS<span class="token punctuation">,</span>
+                                  <span class="token keyword">new</span> <span class="token class-name">LinkedBlockingQueue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Runnable</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="newCachedThreadPool"><a href="#newCachedThreadPool" class="headerlink" title="newCachedThreadPool"></a>newCachedThreadPool</h2><p>可进行缓存的线程池，常用的线程池。它的线程数是无限的，核心线程数为0，默认是存活时间是60s，即空闲60s后被销毁。有2种创建方法：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">ExecutorService</span> <span class="token function">newCachedThreadPool</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ThreadPoolExecutor</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span>MAX_VALUE<span class="token punctuation">,</span>
+                                  <span class="token number">60L</span><span class="token punctuation">,</span> <span class="token class-name">TimeUnit</span><span class="token punctuation">.</span>SECONDS<span class="token punctuation">,</span>
+                                  <span class="token keyword">new</span> <span class="token class-name">SynchronousQueue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Runnable</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>效果：当线程池中没有空闲线程时，这时有任务过来了，那么会新建线程执行任务。有空闲线程则会复用；</p>
+<h2 id="newScheduledThreadPool"><a href="#newScheduledThreadPool" class="headerlink" title="newScheduledThreadPool"></a>newScheduledThreadPool</h2><p>有计划性的线程池，可设置延迟时间，在给定的延迟时间之后运行，或者周期性的运行。与Timer定时器类似。构造函数：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * Creates a new &#123;@code ScheduledThreadPoolExecutor&#125; with the
+ * given core pool size.
+ *
+ * @param corePoolSize the number of threads to keep in the pool, even
+ *        if they are idle, unless &#123;@code allowCoreThreadTimeOut&#125; is set
+ * @throws IllegalArgumentException if &#123;@code corePoolSize &lt; 0&#125;
+ */</span>
+<span class="token keyword">public</span> <span class="token class-name">ScheduledThreadPoolExecutor</span><span class="token punctuation">(</span><span class="token keyword">int</span> corePoolSize<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span>corePoolSize<span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span>MAX_VALUE<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> NANOSECONDS<span class="token punctuation">,</span>
+          <span class="token keyword">new</span> <span class="token class-name">DelayedWorkQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>内部用的延时阻塞队列维护任务进行，线程池并不常用。</p>
+<h2 id="newWorkStealingPool"><a href="#newWorkStealingPool" class="headerlink" title="newWorkStealingPool"></a>newWorkStealingPool</h2><p>抢占式线程池，与其他4种不同，使用的是ForkJoinPool类，构造函数：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * Creates a thread pool that maintains enough threads to support
+ * the given parallelism level, and may use multiple queues to
+ * reduce contention. The parallelism level corresponds to the
+ * maximum number of threads actively engaged in, or available to
+ * engage in, task processing. The actual number of threads may
+ * grow and shrink dynamically. A work-stealing pool makes no
+ * guarantees about the order in which submitted tasks are
+ * executed.
+ *
+ * @param parallelism the targeted parallelism level
+ * @return the newly created thread pool
+ * @throws IllegalArgumentException if &#123;@code parallelism &lt;= 0&#125;
+ * @since 1.8
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">ExecutorService</span> <span class="token function">newWorkStealingPool</span><span class="token punctuation">(</span><span class="token keyword">int</span> parallelism<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ForkJoinPool</span>
+        <span class="token punctuation">(</span>parallelism<span class="token punctuation">,</span>
+         <span class="token class-name">ForkJoinPool</span><span class="token punctuation">.</span>defaultForkJoinWorkerThreadFactory<span class="token punctuation">,</span>
+         <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>它是一个并行的线程池，入参是线程并发的数量，这个线程不会保证任务的顺序执行，哪个线程抢到任务，就由它执行</p>
 
                 
             </div>
@@ -542,7 +582,7 @@ Hash table size 138389, node heap has 76 buffer(s)
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://longbig.github.io/2021/04/27/innodb%E5%85%B3%E9%94%AE%E7%89%B9%E6%80%A7/">https://longbig.github.io/2021/04/27/innodb%E5%85%B3%E9%94%AE%E7%89%B9%E6%80%A7/</a>
+                    <a href="https://longbig.github.io/2021/05/08/java8%E7%9A%845%E7%A7%8D%E7%BA%BF%E7%A8%8B%E6%B1%A0/">https://longbig.github.io/2021/05/08/java8%E7%9A%845%E7%A7%8D%E7%BA%BF%E7%A8%8B%E6%B1%A0/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -747,9 +787,10 @@ Hash table size 138389, node heap has 76 buffer(s)
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/05/08/java8%E7%9A%845%E7%A7%8D%E7%BA%BF%E7%A8%8B%E6%B1%A0/">
                     <div class="card-image">
@@ -767,9 +808,9 @@ Hash table size 138389, node heap has 76 buffer(s)
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-08
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -778,6 +819,7 @@ Hash table size 138389, node heap has 76 buffer(s)
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -788,12 +830,13 @@ Hash table size 138389, node heap has 76 buffer(s)
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/04/17/mysql%E7%B4%A2%E5%BC%95%E5%9F%BA%E7%A1%80/">
+                <a href="/2021/04/27/innodb%E5%85%B3%E9%94%AE%E7%89%B9%E6%80%A7/">
                     <div class="card-image">
                         
-                        <img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/01.jpeg" class="responsive-img" alt="mysql索引基础">
                         
-                        <span class="card-title">mysql索引基础</span>
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="innodb关键特性">
+                        
+                        <span class="card-title">innodb关键特性</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -804,7 +847,7 @@ Hash table size 138389, node heap has 76 buffer(s)
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-27
                             </span>
                         <span class="publish-author">
                             
