@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="innodb关键特性, 龙哥的博客">
+    <meta name="keywords" content="高德数据可视化初体验, 龙哥的博客">
     <meta name="description" content="武汉大学 | 程序猿">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>innodb关键特性 | 龙哥的博客</title>
+    <title>高德数据可视化初体验 | 龙哥的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">innodb关键特性</h1>
+                    <h1 class="description center-align post-title">高德数据可视化初体验</h1>
                 </div>
             </div>
         </div>
@@ -443,7 +443,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-27
+                    2022-02-07
                 </div>
                 
 
@@ -467,54 +467,101 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Innodb关键特性"><a href="#Innodb关键特性" class="headerlink" title="Innodb关键特性"></a>Innodb关键特性</h1><h2 id="插入缓冲"><a href="#插入缓冲" class="headerlink" title="插入缓冲"></a>插入缓冲</h2><h3 id="Insert-Buffer"><a href="#Insert-Buffer" class="headerlink" title="Insert Buffer"></a>Insert Buffer</h3><p>概念：对于<strong>非聚集索引的插入或更新操作</strong>，先判断插入的非聚集索引页是否在缓冲池中，在则直接插入。不在，先放入到insert buffer对象中，在一定情况下对insert buffer和辅助索引页子节点merge操作。 （可将多个插入合并到一个操作中，大大提高了对非聚集索引的插入性能）</p>
-<p>使用需要满足2个条件：</p>
-<ul>
-<li>索引是辅助索引</li>
-<li>索引不是唯一的 （因为insert buffer不查找索引页判断插入记录唯一性）</li>
-</ul>
-<p>通过<code>show engine innodb status</code>查看Innodb引擎状态，找到<code>INSERT BUFFER AND ADAPTIVE HASH INDEX</code></p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">-------------------------------------
-INSERT BUFFER AND ADAPTIVE HASH INDEX
--------------------------------------
-Ibuf: size 1, free list len 0, seg size 2, 0 merges
-merged operations:
- insert 0, delete mark 0, delete 0
-discarded operations:
- insert 0, delete mark 0, delete 0
-Hash table size 138389, node heap has 0 buffer(s)
-Hash table size 138389, node heap has 1 buffer(s)
-Hash table size 138389, node heap has 0 buffer(s)
-Hash table size 138389, node heap has 1 buffer(s)
-Hash table size 138389, node heap has 1 buffer(s)
-Hash table size 138389, node heap has 1 buffer(s)
-Hash table size 138389, node heap has 1 buffer(s)
-Hash table size 138389, node heap has 76 buffer(s)
-0.00 hash searches&#x2F;s, 0.00 non-hash searches&#x2F;s
----<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h1 id="高德数据可视化初体验"><a href="#高德数据可视化初体验" class="headerlink" title="高德数据可视化初体验"></a>高德数据可视化初体验</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>换了新工作，虽然还是java开发，但是之前搞做在线教育的，现在做地图相关的事。因此，花了些时间学了空间索引相关的内容，后期会写关于空间索引相关的内容，这期写地理数据可视化相关的内容。</p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p><strong>1.高德开发平台账号</strong></p>
+<p>高德开放平台：<a target="_blank" rel="noopener" href="https://lbs.amap.com/">https://lbs.amap.com/</a></p>
+<p>申请账号并在应用管理创建需要的key，如图</p>
+<p><img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/02.png" alt="高德应用key"></p>
+<p><strong>2.学习高德JS API文档</strong></p>
+<p>这里我主要关注多边形的展示，所以贴一下矢量图形的链接，有需要的可自行看其他内容<br><a target="_blank" rel="noopener" href="https://lbs.amap.com/api/jsapi-v2/guide/overlays/vector-overlay">https://lbs.amap.com/api/jsapi-v2/guide/overlays/vector-overlay</a></p>
+<p>然后，楼主又花了点时间在B站上学了JS基本语法相关的内容，然后就可以动手做了</p>
+<h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><h3 id="后端接口"><a href="#后端接口" class="headerlink" title="后端接口"></a>后端接口</h3><p>接口主要提供国内的行政区划数据，即省市区的编码和多边形围栏数据，在网上google找了一个可以用的数据<a target="_blank" rel="noopener" href="https://github.com/Civitasv/DataV_GeoJSON%EF%BC%8C%E5%B0%86%E5%8C%BA%E7%BA%A7%E5%88%AB%E7%9A%84json%E6%95%B0%E6%8D%AE%E8%A7%A3%E6%9E%90%E5%87%BA%E6%9D%A5%EF%BC%8C%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E9%87%8C%EF%BC%8C%E8%BF%99%E6%A0%B7%E6%88%91%E4%BB%AC%E5%B0%B1%E6%9C%89%E4%BA%86%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E3%80%82">https://github.com/Civitasv/DataV_GeoJSON，将区级别的json数据解析出来，导入数据库里，这样我们就有了基础数据。</a></p>
+<p>然后提供一个接口，可以返回多边形边界数据</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/queryByAdcode"</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@CrossOrigin</span>
+    <span class="token keyword">public</span> <span class="token class-name">ShapeListDTO</span> <span class="token function">queryByAdcode</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span><span class="token string">"adcode"</span><span class="token punctuation">)</span> <span class="token class-name">Integer</span> adcode<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"queryByAdcode,adcode:&#123;&#125;"</span><span class="token punctuation">,</span> adcode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> cityService<span class="token punctuation">.</span><span class="token function">queryByAdcode</span><span class="token punctuation">(</span>adcode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+
+<span class="token comment">//返回对象数据结构</span>
+<span class="token annotation punctuation">@Data</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ShapeListDTO</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Integer</span> total<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> shape<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
-<h3 id="change-buffer"><a href="#change-buffer" class="headerlink" title="change buffer"></a>change buffer</h3><p>Innodb可对DML操作进行缓冲，包括：INSERT、DELETE、UPDATE，对应<code>insert buffer</code>、<code>delete buffer</code>、<code>purge buffer</code>；</p>
-<p>适用对象是：非唯一的辅助索引；</p>
-<p>参数<code>innodb_change_buffering</code>可设置缓冲类型：insert、delete、purges、changes、all等等；</p>
-<p>对一条记录的UPDATE过程：</p>
-<ul>
-<li>先将记录标记已删除  （对应delete buffer，状态的delete mark）</li>
-<li>真正删除记录  （对应purge buffer，状态的delete）</li>
-</ul>
-<h2 id="两次写"><a href="#两次写" class="headerlink" title="两次写"></a>两次写</h2><p>doublewrite用于提升Innodb的数据页可靠性。</p>
-<p>在应用重做日志前，用户需要一个页的副本，当写入失效时，先通过页的副本还原该页，再进行重做，即doublewrite；</p>
-<p><strong>写过程</strong>：在对缓冲池刷脏页时，不是直接写磁盘，而是将脏页复制到内存中的doublewrite buffer，之后doublewrite buffer分2次，每次1MB顺序写入共享表空间的物理磁盘上，最后同步磁盘。</p>
-<h2 id="自适应哈希索引"><a href="#自适应哈希索引" class="headerlink" title="自适应哈希索引"></a>自适应哈希索引</h2><p>Innodb会监控表上个索引页的查询，如果观察到建立哈希索引可以提升性能，Innodb会自己建立哈希索引，即自适应哈希索引（Adaptive Hash Index，AHI）；</p>
-<p>使用要求：</p>
-<ul>
-<li>等值查询</li>
-<li>以该模式访问100次</li>
-<li>页通过该模式访问了N次，N=页中记录/16</li>
-</ul>
-<h2 id="异步IO"><a href="#异步IO" class="headerlink" title="异步IO"></a>异步IO</h2><p>AIO，用户发出一个IO请求后，可直接发下一个IO请求，不用等待响应。AIO还可将多个IO请求merge为1个IO，提高了IOPS性能；</p>
-<h2 id="刷新邻接页"><a href="#刷新邻接页" class="headerlink" title="刷新邻接页"></a>刷新邻接页</h2><p>刷脏页时，Innodb检测该页所在区（extent）的所有页，如果是脏页，一并刷新。固态硬盘已经有很强的IO能力，可关闭该功能；</p>
+<h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><p>前端通过ajax请求后端接口获取数据，然后调高德JS API方法将多边形边界数据在页面上渲染即可</p>
+<p>直接贴代码：</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token name">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>X-UA-Compatible<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>IE=edge<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>initial-scale=1.0, user-scalable=no, width=device-width<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>地图显示<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+        <span class="token selector">html,
+        body,
+        #container</span> <span class="token punctuation">&#123;</span>
+            <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+            <span class="token property">height</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token comment">&lt;!-- 加载地图JSAPI脚本 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://webapi.amap.com/maps?v=2.0&amp;key=【你申请的key】<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">var</span> req <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    req<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"http://127.0.0.1:8080/queryByAdcode?adcode=110000"</span><span class="token punctuation">)</span>
+    req<span class="token punctuation">.</span><span class="token function-variable function">onload</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>req<span class="token punctuation">.</span>responseText <span class="token operator">==</span> <span class="token string">''</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                errorMsg<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display <span class="token operator">=</span> <span class="token string">'block'</span>
+            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>responseText<span class="token punctuation">)</span>
+                <span class="token keyword">var</span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AMap<span class="token punctuation">.</span>Map</span><span class="token punctuation">(</span><span class="token string">'container'</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+                    viewMode<span class="token operator">:</span> <span class="token string">'3D'</span><span class="token punctuation">,</span> <span class="token comment">// 默认使用 2D 模式，如果希望使用带有俯仰角的 3D 模式，请设置 viewMode: '3D',</span>
+                    zoom<span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token comment">//初始化地图层级</span>
+                    center<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">116.397428</span><span class="token punctuation">,</span> <span class="token number">39.90923</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">//初始化地图中心点</span>
+                <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                <span class="token keyword">var</span> resp <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>responseText<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">var</span> total <span class="token operator">=</span> resp<span class="token punctuation">.</span>total<span class="token punctuation">;</span>
+                <span class="token keyword">var</span> shapes <span class="token operator">=</span> resp<span class="token punctuation">.</span>shape<span class="token punctuation">;</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> total<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                    <span class="token keyword">var</span> poly <span class="token operator">=</span> shapes<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token keyword">var</span> points <span class="token operator">=</span> poly<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">var</span> list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> points<span class="token punctuation">.</span>length<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                        <span class="token keyword">var</span> pp <span class="token operator">=</span> points<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        list<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>pp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">&#125;</span>
+                    <span class="token keyword">var</span> polygon1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AMap<span class="token punctuation">.</span>Polygon</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+                        path<span class="token operator">:</span> list<span class="token punctuation">,</span>          <span class="token comment">//设置线覆盖物路径</span>
+                        fillColor<span class="token operator">:</span> <span class="token string">'#42cee0'</span><span class="token punctuation">,</span> <span class="token comment">// 多边形填充颜色</span>
+                        borderWeight<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token comment">// 线条宽度，默认为 1</span>
+                        strokeColor<span class="token operator">:</span> <span class="token string">'red'</span><span class="token punctuation">,</span> <span class="token comment">// 线条颜色</span>
+                    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    map<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>polygon1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    req<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><p><img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/03.png"></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>我的代码仓库地址，这里只有后端代码：<a target="_blank" rel="noopener" href="https://github.com/longbig/LBS-learn">https://github.com/longbig/LBS-learn</a></p>
 
                 
             </div>
@@ -541,7 +588,7 @@ Hash table size 138389, node heap has 76 buffer(s)
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://longbig.github.io/2021/04/27/innodb%E5%85%B3%E9%94%AE%E7%89%B9%E6%80%A7/">https://longbig.github.io/2021/04/27/innodb%E5%85%B3%E9%94%AE%E7%89%B9%E6%80%A7/</a>
+                    <a href="https://longbig.github.io/2022/02/07/%E9%AB%98%E5%BE%B7%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%9D%E4%BD%93%E9%AA%8C/">https://longbig.github.io/2022/02/07/%E9%AB%98%E5%BE%B7%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%9D%E4%BD%93%E9%AA%8C/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -746,9 +793,48 @@ Hash table size 138389, node heap has 76 buffer(s)
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2022/02/07/%E9%AB%98%E5%BE%B7%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%9D%E4%BD%93%E9%AA%8C/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="高德数据可视化初体验">
+                        
+                        <span class="card-title">高德数据可视化初体验</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            longbig
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2021/05/08/java8%E7%9A%845%E7%A7%8D%E7%BA%BF%E7%A8%8B%E6%B1%A0/">
                     <div class="card-image">
@@ -766,44 +852,8 @@ Hash table size 138389, node heap has 76 buffer(s)
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-08
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            longbig
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/04/17/mysql%E7%B4%A2%E5%BC%95%E5%9F%BA%E7%A1%80/">
-                    <div class="card-image">
-                        
-                        <img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/01.jpeg" class="responsive-img" alt="mysql索引基础">
-                        
-                        <span class="card-title">mysql索引基础</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-08
                             </span>
                         <span class="publish-author">
                             
