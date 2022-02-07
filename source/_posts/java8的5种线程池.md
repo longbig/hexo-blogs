@@ -12,8 +12,6 @@ categories:
 ---
 # JAVA8的5种线程池
 
-[toc]
-
 ## 介绍
 
 JAVA1.8版本加了一种newWorkStealingPool，现在共有5种线程池：newSingleThreadPool、newFixedThreadPool、newCachedThreadPool、newScheduledThreadPool、newWorkStealingPool。

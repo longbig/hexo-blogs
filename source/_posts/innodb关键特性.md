@@ -12,8 +12,6 @@ categories:
 ---
 # Innodb关键特性
 
-[toc]
-
 ## 插入缓冲
 
 ### Insert Buffer
