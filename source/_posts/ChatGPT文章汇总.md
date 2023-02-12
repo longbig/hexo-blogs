@@ -25,3 +25,12 @@ categories:
 ### 2.做成聊天机器人
 
 * [ChatGPT接入个人微信](https://longbig.github.io/2023/02/12/ChatGPT%E6%8E%A5%E5%85%A5%E4%B8%AA%E4%BA%BA%E5%BE%AE%E4%BF%A1/)
+
+
+## 关于我
+
+欢迎关注我的技术公众号：**卷福同学**
+
+技术文章第一时间会在公众号上发布哦~
+
+![公众号](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/wechat/%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.jpeg)
