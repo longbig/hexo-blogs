@@ -22,15 +22,15 @@ categories:
 
 ### 写一封情书
 
-![](/Users/yuyunlong/Pictures/博客/chatGPT/13.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/13.png)
 
 ### 回答各种问题
 
-![](/Users/yuyunlong/Pictures/博客/chatGPT/16.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/16.png)
 
 ### 帮你写代码
 
-![](/Users/yuyunlong/Pictures/博客/chatGPT/15.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/15.png)
 
 当然这里展示的也只是ChatGPT功能的冰山一角，更多好玩的玩法需要大家自己去发现。看到这，你是不是也按捺不住想自己玩一把哦。现在我就来教大家如何注册ChatGPT账号。
 
@@ -56,7 +56,7 @@ PS：目前最便宜的注册方式啦
 
 打开网站：https://sms-activate.org/cn
 
-![](/Users/yuyunlong/Pictures/博客/chatGPT/1.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/1.png)
 
 点击右上角的注册按钮：
 
@@ -68,11 +68,11 @@ PS：目前最便宜的注册方式啦
 
 注册完成后，登录进去，再点击右上角的充值按钮，选择支付宝付款。**我们充值0.2美元就够了**
 
-![](/Users/yuyunlong/Pictures/博客/chatGPT/2.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/2.png)
 
 充值完成后，在页面右上角可以看到账户余额
 
-![](/Users/yuyunlong/Pictures/博客/chatGPT/3.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/3.png)
 
 
 
@@ -84,17 +84,17 @@ PS：目前最便宜的注册方式啦
 
 * 在打开的页面输入你的邮箱号（国内邮箱也可以），或者有谷歌账号的用谷歌账号注册也可以
 
-![](/Users/yuyunlong/Pictures/博客/chatGPT/4.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/4.png)
 
 * 输入邮箱号的需要在邮箱收到的邮件内点击验证，然后继续在注册页面填入信息
 
-![](/Users/yuyunlong/Pictures/博客/chatGPT/6.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/6.png)
 
 ## 5.输入验证码
 
 上一步输入完信息后点击Continue按钮进行手机验证码校验
 
-![](/Users/yuyunlong/Pictures/博客/chatGPT/6_1.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/6_1.png)
 
 有国外手机号的这一步直接输手机号注册啊。
 
@@ -104,7 +104,7 @@ PS：目前最便宜的注册方式啦
 
 然后加入购物车（这一步就已经买了）
 
-![](/Users/yuyunlong/Pictures/博客/chatGPT/7.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/7.png)
 
 * 然后等一会出现如下界面
 
@@ -112,18 +112,18 @@ PS：目前最便宜的注册方式啦
 
 **PS：注意购买后的短信有效期是20分钟，需要快速操作哦~**
 
-![](/Users/yuyunlong/Pictures/博客/chatGPT/8.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/8.png)
 
 * 再等一会，平台收到验证码短信后会发出提示音，我们把验证码拷贝出来输入到OpenAI的注册界面即可。如下图所示
 
 
-![](/Users/yuyunlong/Pictures/博客/chatGPT/10.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/10.png)
 
-![](/Users/yuyunlong/Pictures/博客/chatGPT/9.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/9.png)
 
 * 最后就是注册完成的页面了，这里随便选一个就行
 
-![](/Users/yuyunlong/Pictures/博客/chatGPT/11.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/11.png)
 
 * 登录体验
 
@@ -135,7 +135,7 @@ PS：目前最便宜的注册方式啦
 
 这时你就可以开始尽情和机器人聊天了
 
-![](/Users/yuyunlong/Pictures/博客/chatGPT/13.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/13.png)
 
 ## 其他注意
 
