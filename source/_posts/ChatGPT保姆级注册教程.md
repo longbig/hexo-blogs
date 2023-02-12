@@ -140,3 +140,12 @@ PS：目前最便宜的注册方式啦
 ## 其他注意
 
 注意香港的网络是无法注册，也无法使用ChatGPT的
+
+## 关于我
+
+欢迎关注我的技术公众号：**卷福同学**
+
+技术文章第一时间会在公众号上发布哦~
+
+![公众号](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/wechat/%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.jpeg)
+
