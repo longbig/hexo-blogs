@@ -91,6 +91,10 @@ URL配置： IP:端口/接收消息路径
 * wechat.sEncodingAESKey
 * wechat.sCorpID
 * wechat.corpsecret
+* wechat.agentId
+
+<img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/wechat_business/11.png" style="zoom:33%;" />
+
 
 接口Java示例代码：
 
