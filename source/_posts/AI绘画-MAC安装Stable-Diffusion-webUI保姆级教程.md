@@ -8,7 +8,7 @@ date: 2023-02-26 17:46:29
 password:
 summary:
 tags:
-img: /medias/featureimages/1.png
+img: /medias/featureimages/3.png
 categories:
 ---
 # 【AI绘画】Mac安装stable-diffusion-webui绘制AI妹子保姆级教程
