@@ -8,6 +8,7 @@ date: 2023-02-26 17:46:29
 password:
 summary:
 tags:
+img: https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/ai/girl/3.png
 categories:
 ---
 # 【AI绘画】Mac安装stable-diffusion-webui绘制AI妹子保姆级教程
