@@ -479,7 +479,7 @@
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">pip install <span class="token operator">-</span>r requirements_versions<span class="token punctuation">.</span>txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>这一步是安装Python项目运行所有需要的依赖，这步很大概率出现无法安装gfpgan的问题：Couldn’t install gfpgan</p>
-<p><img src="https://github.com/longbig/hexo-blogs/blob/master/source/img/ai/stable-diffusion-webui/1.png"></p>
+<p><img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/ai/stable-diffusion-webui/1.png"></p>
 <p>解决方法：</p>
 <p>网络连接超时的问题，更改pip使用国内镜像库，重试几次。这个问题暂无明确解法，如果无法解决可继续往下走</p>
 <h3 id="3-2pip更换国内镜像库"><a href="#3-2pip更换国内镜像库" class="headerlink" title="3.2pip更换国内镜像库"></a>3.2pip更换国内镜像库</h3><p>更换方法参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45770232/article/details/126472610">https://blog.csdn.net/qq_45770232/article/details/126472610</a></p>
@@ -528,10 +528,10 @@ pip3 install -r requirements_versions.txt<span aria-hidden="true" class="line-nu
 <p><strong>LoRA模型</strong></p>
 <p>这个应该是大家最喜欢的模型了，懂的都懂。。。</p>
 <p>下载地址：<a target="_blank" rel="noopener" href="https://civitai.com/models/6424/chilloutmix">https://civitai.com/models/6424/chilloutmix</a></p>
-<p><img src="https://github.com/longbig/hexo-blogs/blob/master/source/img/ai/stable-diffusion-webui/5.png"></p>
+<p><img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/ai/stable-diffusion-webui/5.png"></p>
 <p>右上角Download下载，其他模型大家可自行在这个网站上探索，非常的多，这里推荐几个热门的:</p>
 <p><a target="_blank" rel="noopener" href="https://civitai.com/models/7448/korean-doll-likeness">korean-doll-likeness</a></p>
-<p><img src="https://github.com/longbig/hexo-blogs/blob/master/source/img/ai/stable-diffusion-webui/6.png"></p>
+<p><img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/ai/stable-diffusion-webui/6.png"></p>
 <h3 id="4-2-安装模型"><a href="#4-2-安装模型" class="headerlink" title="4.2 安装模型"></a>4.2 安装模型</h3><ul>
 <li>对于<strong>checkpoint模型</strong>，请移动到<code>stable-diffusion-webui/models/Stable-diffusion</code>⽬录下</li>
 <li>对于<strong>LoRA模型</strong>，请移动到<code>stable-diffusion-webui/models/Lora</code>目录下</li>
@@ -558,7 +558,7 @@ export PYTORCH_ENABLE_MPS_FALLBACK&#x3D;1<span aria-hidden="true" class="line-nu
 </li>
 </ol>
 <p>如图所示</p>
-<p><img src="https://github.com/longbig/hexo-blogs/blob/master/source/img/ai/stable-diffusion-webui/7.png"></p>
+<p><img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/ai/stable-diffusion-webui/7.png"></p>
 <h3 id="5-3-运行项目"><a href="#5-3-运行项目" class="headerlink" title="5.3 运行项目"></a>5.3 运行项目</h3><p>上面我们使用conda进入了虚拟环境，然后再运行项目即可，执行命令：</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 激活虚拟环境sd
 conda activate sd 
@@ -570,12 +570,12 @@ cd stable-diffusion-webui
 python launch.py<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>这一步如果人品好的话，第一次就能全部正常运行完，运行完之后，出现<code>http://127.0.0.1:7860</code>字样说明运行成功了，浏览器打开这个地址就能开始愉快地玩耍了，玩耍方式自行探索哦~</p>
-<p><img src="https://github.com/longbig/hexo-blogs/blob/master/source/img/ai/stable-diffusion-webui/9.png"></p>
+<p><img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/ai/stable-diffusion-webui/9.png"></p>
 <h2 id="6-相关问题"><a href="#6-相关问题" class="headerlink" title="6.相关问题"></a>6.相关问题</h2><h3 id="pip-install-r-requirements-txt时报错，有一些依赖没有安装上"><a href="#pip-install-r-requirements-txt时报错，有一些依赖没有安装上" class="headerlink" title="pip install -r requirements.txt时报错，有一些依赖没有安装上"></a>pip install -r requirements.txt时报错，有一些依赖没有安装上</h3><p>解决方法：手动安装一下依赖包</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">pip install 缺少的依赖包<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h2 id="7-模型下载及图片下载"><a href="#7-模型下载及图片下载" class="headerlink" title="7.模型下载及图片下载"></a>7.模型下载及图片下载</h2><p>文章里用到的模型和图片下载方式：公众号<code>卷福同学</code>内发关键词<code>AI绘画</code>获取</p>
-<p><img src="https://github.com/longbig/hexo-blogs/blob/master/source/img/ai/stable-diffusion-webui/11.png"></p>
+<p><img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/ai/stable-diffusion-webui/11.png"></p>
 <h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><p>欢迎关注我的技术公众号：<strong>卷福同学</strong></p>
 <p>技术文章第一时间会在公众号上发布哦~</p>
 <p><img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/wechat/%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.jpeg" alt="公众号"></p>
