@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="ChatGPT接入企业微信成为聊天机器人, 龙哥的博客">
+    <meta name="keywords" content="AI绘画 MAC安装Stable Diffusion webUI保姆级教程, 龙哥的博客">
     <meta name="description" content="武汉大学 | 程序猿">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>ChatGPT接入企业微信成为聊天机器人 | 龙哥的博客</title>
+    <title>AI绘画 MAC安装Stable Diffusion webUI保姆级教程 | 龙哥的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">ChatGPT接入企业微信成为聊天机器人</h1>
+                    <h1 class="description center-align post-title">AI绘画 MAC安装Stable Diffusion webUI保姆级教程</h1>
                 </div>
             </div>
         </div>
@@ -443,7 +443,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-02-19
+                    2023-02-26
                 </div>
                 
 
@@ -467,165 +467,115 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="ChatGPT接入企业微信成为聊天机器人教程"><a href="#ChatGPT接入企业微信成为聊天机器人教程" class="headerlink" title="ChatGPT接入企业微信成为聊天机器人教程"></a>ChatGPT接入企业微信成为聊天机器人教程</h1><h2 id="1-聊天效果"><a href="#1-聊天效果" class="headerlink" title="1.聊天效果"></a>1.聊天效果</h2><p>上次给大家讲了ChatGPT接入个人微信的方法，但是个人微信容易被封号。这次就教大家接入企业微信，不会再被封号哦~ 话不多说，直接看机器人的聊天效果。基本能实现ChatGPT的聊天效果了。我们实现的是在企业微信中添加一个机器人，让机器人后台与chatGPT互通，这样和机器人对话就是和ChatGPT对话了。</p>
-<p><img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/wechat_business/1.png"></p>
-<h2 id="2-接入步骤"><a href="#2-接入步骤" class="headerlink" title="2.接入步骤"></a>2.接入步骤</h2><h3 id="2-1-准备工作"><a href="#2-1-准备工作" class="headerlink" title="2.1 准备工作"></a>2.1 准备工作</h3><ul>
-<li>一台配置公网IP的服务器，或是有阿里云函数计算的域名</li>
-<li>服务器配置了Java运行环境</li>
-<li>有额度的chatGPT账号，并创建了账号的api key，创建过程可以往下看</li>
-<li>以上配置有了才能进行后面的步骤哦~</li>
-<li>代码获取方式：公众号 <code>卷福同学</code> 内，发关键词<code>ChatGPT企业微信</code>获取</li>
-<li>需要ChatGPT账号或是API KEY的可以公众号内联系</li>
-</ul>
-<h3 id="2-1创建企业微信团队"><a href="#2-1创建企业微信团队" class="headerlink" title="2.1创建企业微信团队"></a>2.1创建企业微信团队</h3><p>首先下载企业微信，登录注册创建一个企业微信团队。不要选个人团队（亲测无法应用机器人）。具体步骤可自行探索。这里不多说了</p>
-<h3 id="2-2添加机器人"><a href="#2-2添加机器人" class="headerlink" title="2.2添加机器人"></a>2.2添加机器人</h3><p>PC端登录地址：<a target="_blank" rel="noopener" href="https://work.weixin.qq.com/wework_admin/frame#apps">https://work.weixin.qq.com/wework_admin/frame#apps</a></p>
-<p>先登录上一步创建好的企业微信账号</p>
-<p>然后添加自建应用</p>
-<img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/wechat_business/2.png" style="zoom:33%;" />
-
-<p>填写名称、上传logo图片，创建应用</p>
-<img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/wechat_business/3.png" style="zoom:33%;" />
-
-<h3 id="2-3设置企业可信IP"><a href="#2-3设置企业可信IP" class="headerlink" title="2.3设置企业可信IP"></a>2.3设置企业可信IP</h3><p>创建好应用后，在应用详情里，开发者接口配置那里，配置企业可信IP（准备工作里让你准备的服务器的公网IP）</p>
-<p>这一步的作用是：你给机器人发消息，消息会转给配置的IP，配置可信是为了让你的IP在白名单里。否则微信不会转发消息的。</p>
-<img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/wechat_business/4.png" style="zoom:33%;" />
-
-<h3 id="2-4-设置API接收"><a href="#2-4-设置API接收" class="headerlink" title="2.4 设置API接收"></a>2.4 设置API接收</h3><p>上一步配置了IP，还要继续配置API接收，简单说就是微信转发消息到哪个路径里。</p>
-<img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/wechat_business/5.png" style="zoom:33%;" />
-
-<p>这一步比较复杂，我们慢慢往后看。</p>
-<h4 id="2-4-1-配置URL"><a href="#2-4-1-配置URL" class="headerlink" title="2.4.1 配置URL"></a>2.4.1 配置URL</h4><p>第一次配置需要验证消息，就是你配置的接口，微信第一次验证通过后，才允许发消息。需要配置URL和Token</p>
-<p>配置方式：</p>
-<p>URL配置： IP:端口/接收消息路径</p>
-<p>示例 <a target="_blank" rel="noopener" href="http://127.0.0.1:8080/receiveMsgFromWechat">http://127.0.0.1:8080/receiveMsgFromWechat</a>  （要替换IP哦）</p>
-<img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/wechat_business/6.png" style="zoom:33%;" />
-
-<h4 id="2-4-2-验证消息"><a href="#2-4-2-验证消息" class="headerlink" title="2.4.2 验证消息"></a>2.4.2 验证消息</h4><p>接着重要的来了，我们必须按照微信要求的格式配置接口，官方文档：<a target="_blank" rel="noopener" href="https://developer.work.weixin.qq.com/document/10514">接收消息与事件</a></p>
-<p>小卷已经把代码整好了，获取地址：公众号 <code>卷福同学</code> 内，发关键词<code>ChatGPT企业微信</code>获取</p>
-<p>需要替换application.properties文件中的5个参数，具体要换成什么看代码库里的描述</p>
+                <h1 id="【AI绘画】Mac安装stable-diffusion-webui绘制AI妹子保姆级教程"><a href="#【AI绘画】Mac安装stable-diffusion-webui绘制AI妹子保姆级教程" class="headerlink" title="【AI绘画】Mac安装stable-diffusion-webui绘制AI妹子保姆级教程"></a>【AI绘画】Mac安装stable-diffusion-webui绘制AI妹子保姆级教程</h1><h2 id="1-作品图"><a href="#1-作品图" class="headerlink" title="1.作品图"></a>1.作品图</h2><p><img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/ai/girl/1.png"></p>
+<p><img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/ai/girl/3.png"></p>
+<h2 id="2-准备工作"><a href="#2-准备工作" class="headerlink" title="2.准备工作"></a>2.准备工作</h2><p>目前网上能搜到的stable-diffusion-webui的安装教程都是Window和Mac M1芯片的，而对于因特尔芯片的文章少之又少，这就导致我们还在用老Intel 芯片的Mac本，看着别人生成美女图片只能眼馋。所以小卷这周末折腾了一天，总算是让老Mac本发挥作用了。先来说说准备工作：</p>
 <ul>
-<li>chatgpt.apiKey</li>
-<li>wechat.sToken</li>
-<li>wechat.sEncodingAESKey</li>
-<li>wechat.sCorpID</li>
-<li>wechat.corpsecret</li>
-<li>wechat.agentId</li>
+<li>Mac笔记本操作系统版本 &gt;= 13.2.1 （亲测10.0版本各种问题无法运行，无奈花了一小时升级系统）</li>
+<li>Python3.10.6版本（已安装其他版本也不要紧，后面我们用Conda做版本控制）</li>
+<li>stable-diffusion-webui代码下载，下载地址：<a target="_blank" rel="noopener" href="https://github.com/AUTOMATIC1111/stable-diffusion-webui">https://github.com/AUTOMATIC1111/stable-diffusion-webui</a></li>
 </ul>
-<img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/wechat_business/11.png" style="zoom:33%;" />
+<h2 id="3-安装步骤"><a href="#3-安装步骤" class="headerlink" title="3.安装步骤"></a>3.安装步骤</h2><h3 id="3-1-依赖安装"><a href="#3-1-依赖安装" class="headerlink" title="3.1 依赖安装"></a>3.1 依赖安装</h3><p>从github上把stable-diffusion-webui的源代码下载下来，进入到stable-diffusion-webui目录下，执行</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">pip install <span class="token operator">-</span>r requirements_versions<span class="token punctuation">.</span>txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>这一步是安装Python项目运行所有需要的依赖，这步很大概率出现无法安装gfpgan的问题：Couldn’t install gfpgan</p>
+<p><img src="https://github.com/longbig/hexo-blogs/blob/master/source/img/ai/stable-diffusion-webui/1.png"></p>
+<p>解决方法：</p>
+<p>网络连接超时的问题，更改pip使用国内镜像库，重试几次。这个问题暂无明确解法，如果无法解决可继续往下走</p>
+<h3 id="3-2pip更换国内镜像库"><a href="#3-2pip更换国内镜像库" class="headerlink" title="3.2pip更换国内镜像库"></a>3.2pip更换国内镜像库</h3><p>更换方法参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45770232/article/details/126472610">https://blog.csdn.net/qq_45770232/article/details/126472610</a></p>
+<h3 id="3-3安装anaconda"><a href="#3-3安装anaconda" class="headerlink" title="3.3安装anaconda"></a>3.3安装anaconda</h3><p>这一步是方便对Python做版本控制，避免卸载重新安装不同版本的Python。</p>
+<p>下载安装地址：<a target="_blank" rel="noopener" href="https://www.anaconda.com/">https://www.anaconda.com/</a></p>
+<p>从官网下载一路点击安装就行。</p>
+<h4 id="Conda添加环境变量"><a href="#Conda添加环境变量" class="headerlink" title="Conda添加环境变量"></a>Conda添加环境变量</h4><p>安装完成后，打开终端，输入conda，如果是无法识别的命令。需要配置环境变量，配置方法：</p>
+<p>修改<code>.bash_profile</code>添加自己安装conda的路径，命令如下：</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">vim ~&#x2F;.bash_profile
 
-<p>接口Java示例代码：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/receiveMsgFromWechat"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">receiveMsgFromDd</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span><span class="token string">"msg_signature"</span><span class="token punctuation">)</span> <span class="token class-name">String</span> msg_signature<span class="token punctuation">,</span>
-                               <span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span><span class="token string">"timestamp"</span><span class="token punctuation">)</span> <span class="token class-name">String</span> timestamp<span class="token punctuation">,</span>
-                               <span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span><span class="token string">"nonce"</span><span class="token punctuation">)</span> <span class="token class-name">String</span> nonce<span class="token punctuation">,</span>
-                               <span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span><span class="token string">"echostr"</span><span class="token punctuation">)</span> <span class="token class-name">String</span> echostr<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
-    <span class="token class-name">WXBizMsgCrypt</span> wxcpt <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WXBizMsgCrypt</span><span class="token punctuation">(</span>sToken<span class="token punctuation">,</span> sEncodingAESKey<span class="token punctuation">,</span> sCorpID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+# 打开文件后，写入下面这行到文件里，注意替换路径
+export PATH&#x3D;&quot;&#x2F;Users&#x2F;(你自己的路径)&#x2F;anaconda3&#x2F;bin:$PATH&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-    <span class="token class-name">String</span> sEchoStr <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-    <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
-        sEchoStr <span class="token operator">=</span> <span class="token class-name"><span class="token namespace">wxcpt<span class="token punctuation">.</span></span>VerifyURL</span><span class="token punctuation">(</span>msg_signature<span class="token punctuation">,</span> timestamp<span class="token punctuation">,</span>
-                nonce<span class="token punctuation">,</span> echostr<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"verifyurl echostr: "</span> <span class="token operator">+</span> sEchoStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment">// 验证URL成功，将sEchoStr返回</span>
-        <span class="token keyword">return</span> sEchoStr<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">//验证URL失败，错误原因请查看异常</span>
-        log<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"verifyurl error,e=&#123;&#125;"</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token string">""</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>接着<code>:wq</code>保存退出，<code>source ~/.bash_profile</code>使配置生效</p>
+<h4 id="修改conda源为国内镜像库"><a href="#修改conda源为国内镜像库" class="headerlink" title="修改conda源为国内镜像库"></a>修改conda源为国内镜像库</h4><p>执行命令如下：</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 如果没有会创建condarc文件
+vim ~&#x2F;.condarc
 
-<p>把代码下载完后，部到你的服务器上，再点击保存，即可验证通过。验证通过后API接收消息就像下面那样</p>
-<p><img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/wechat_business/7.png"></p>
-<h2 id="3-消息接口开发"><a href="#3-消息接口开发" class="headerlink" title="3.消息接口开发"></a>3.消息接口开发</h2><h3 id="3-1接收消息接口开发"><a href="#3-1接收消息接口开发" class="headerlink" title="3.1接收消息接口开发"></a>3.1接收消息接口开发</h3><p>上一步验证完成后，我们就可以用配置的路径接收消息了。但是微信是用的Post方式发消息，所以需要再设置个Post方式的接口，路径还是一样的，上一步配置的GET接口可以注释掉了。消息入参有改变。</p>
-<p>官方文档：<a target="_blank" rel="noopener" href="https://developer.work.weixin.qq.com/document/10514#%E4%BD%BF%E7%94%A8%E6%8E%A5%E6%94%B6%E6%B6%88%E6%81%AF">使用接收消息</a></p>
-<p>这里小卷也把示例代码写好了，大家直接用</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">
-<span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"/receiveMsgFromWechat"</span><span class="token punctuation">,</span>
-        consumes <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">"application/xml"</span><span class="token punctuation">,</span> <span class="token string">"text/xml"</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-        produces <span class="token operator">=</span> <span class="token string">"application/xml;charset=utf-8"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">receiveMsgFromDd</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span><span class="token string">"msg_signature"</span><span class="token punctuation">)</span> <span class="token class-name">String</span> msg_signature<span class="token punctuation">,</span>
-                               <span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span><span class="token string">"timestamp"</span><span class="token punctuation">)</span> <span class="token class-name">String</span> timestamp<span class="token punctuation">,</span>
-                               <span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span><span class="token string">"nonce"</span><span class="token punctuation">)</span> <span class="token class-name">String</span> nonce<span class="token punctuation">,</span>
-                               <span class="token annotation punctuation">@RequestBody</span> <span class="token class-name">WechatXmlDTO</span> body<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
-    <span class="token class-name">WXBizMsgCrypt</span> wxcpt <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WXBizMsgCrypt</span><span class="token punctuation">(</span>sToken<span class="token punctuation">,</span> sEncodingAESKey<span class="token punctuation">,</span> sCorpID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+# 打开文件后，把下面的内容粘贴进去保存
+channels:
+  - https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;anaconda&#x2F;pkgs&#x2F;main&#x2F;
+  - https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;anaconda&#x2F;cloud&#x2F;conda-forge&#x2F;
+  - https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;pkgs&#x2F;free&#x2F;
+  - defaults
+show_channel_urls: true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-    <span class="token class-name">String</span> sEchoStr <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-    <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
-        <span class="token class-name">String</span> msg <span class="token operator">=</span> body<span class="token punctuation">.</span><span class="token function">getEncrypt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">String</span> xmlcontent <span class="token operator">=</span> wxcpt<span class="token punctuation">.</span><span class="token function">decrypt</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"xml content msg: "</span> <span class="token operator">+</span> xmlcontent<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">String</span> data <span class="token operator">=</span> <span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">substringBetween</span><span class="token punctuation">(</span>xmlcontent<span class="token punctuation">,</span> <span class="token string">"&lt;Content>&lt;![CDATA["</span><span class="token punctuation">,</span> <span class="token string">"]]>&lt;/Content>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> data<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">//验证URL失败，错误原因请查看异常</span>
-        log<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"DecryptMsg msg error,e=&#123;&#125;"</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token string">""</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="3-4-创建虚拟环境"><a href="#3-4-创建虚拟环境" class="headerlink" title="3.4 创建虚拟环境"></a>3.4 创建虚拟环境</h3><p>执行命令：</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">conda create -n sd python&#x3D;3.10.6<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>到这一步，我们给机器人发的消息都会转发到自己服务器了，有调试需求的朋友可以自己调试试</p>
-<h3 id="3-2调Openai的接口"><a href="#3-2调Openai的接口" class="headerlink" title="3.2调Openai的接口"></a>3.2调Openai的接口</h3><p>关键的一步来了，这步是调Openai的GPT3.0接口，使用它的文本补齐功能实现对话。需要的自行查看官方接口文档：<a target="_blank" rel="noopener" href="https://platform.openai.com/docs/api-reference/completions">OpenAI官方接口文档</a></p>
-<p>我们用Java开发HTTP POST请求就行，然后需要用到你的账号的API key</p>
-<h4 id="3-2-1-chatGPT账号API-key获取"><a href="#3-2-1-chatGPT账号API-key获取" class="headerlink" title="3.2.1 chatGPT账号API key获取"></a>3.2.1 chatGPT账号API key获取</h4><p>请求Openai的接口需要账号key，获取方式：</p>
+<p>这样就创建了一个名称为<code>sd</code>的虚拟环境</p>
+<h3 id="3-5-安装依赖"><a href="#3-5-安装依赖" class="headerlink" title="3.5 安装依赖"></a>3.5 安装依赖</h3><p>按上面的操作把pip替换为国内镜像源后，激活虚拟环境，并安装需要的依赖包</p>
+<p>执行命令：</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 进入stable-diffusion-webui的文件目录
+cd stable-diffusion-webui
+
+# 激活虚拟环境
+conda activate sd
+
+# 安装所需依赖
+pip3 install -r requirements_versions.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这一步如果没任何问题，安装过程算是有惊无险完成了一半。如果有问题，请自行百度谷歌搜索解决，欢迎留言遇到的问题和解法</p>
+<h2 id="4-模型安装"><a href="#4-模型安装" class="headerlink" title="4. 模型安装"></a>4. 模型安装</h2><h3 id="4-1下载模型"><a href="#4-1下载模型" class="headerlink" title="4.1下载模型"></a>4.1下载模型</h3><p><strong>官方模型下载（checkpoint模型）</strong></p>
+<p>下载地址：<a target="_blank" rel="noopener" href="https://huggingface.co/CompVis/stable-diffusion-v-1-4-original">https://huggingface.co/CompVis/stable-diffusion-v-1-4-original</a></p>
+<p>下载 <code>sd-v1-4.ckpt</code> 或者 <code>sd-v1-4-full-ema.ckpt</code>。</p>
+<p><strong>LoRA模型</strong></p>
+<p>这个应该是大家最喜欢的模型了，懂的都懂。。。</p>
+<p>下载地址：<a target="_blank" rel="noopener" href="https://civitai.com/models/6424/chilloutmix">https://civitai.com/models/6424/chilloutmix</a></p>
+<p><img src="https://github.com/longbig/hexo-blogs/blob/master/source/img/ai/stable-diffusion-webui/5.png"></p>
+<p>右上角Download下载，其他模型大家可自行在这个网站上探索，非常的多，这里推荐几个热门的:</p>
+<p><a target="_blank" rel="noopener" href="https://civitai.com/models/7448/korean-doll-likeness">korean-doll-likeness</a></p>
+<p><img src="https://github.com/longbig/hexo-blogs/blob/master/source/img/ai/stable-diffusion-webui/6.png"></p>
+<h3 id="4-2-安装模型"><a href="#4-2-安装模型" class="headerlink" title="4.2 安装模型"></a>4.2 安装模型</h3><ul>
+<li>对于<strong>checkpoint模型</strong>，请移动到<code>stable-diffusion-webui/models/Stable-diffusion</code>⽬录下</li>
+<li>对于<strong>LoRA模型</strong>，请移动到<code>stable-diffusion-webui/models/Lora</code>目录下</li>
+<li>其他模型按对应的类型移到对应的目录下</li>
+</ul>
+<h2 id="5-运行项目"><a href="#5-运行项目" class="headerlink" title="5. 运行项目"></a>5. 运行项目</h2><h3 id="5-1-跳过GPU检测"><a href="#5-1-跳过GPU检测" class="headerlink" title="5.1 跳过GPU检测"></a>5.1 跳过GPU检测</h3><p>前面说了，咱们用的是老Mac本了，Intel芯片，显卡也用不了。只能用CPU进行计算，跳过GPU的配置如下：</p>
+<p>执行命令：</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 打开配置文件
+vim ~&#x2F;.bash_profile
+
+# 把下面两行拷贝进去，保存后source命令使其生效
+export COMMANDLINE_ARGS&#x3D;&quot;--lowvram --precision full --no-half --skip-torch-cuda-test&quot;
+export PYTORCH_ENABLE_MPS_FALLBACK&#x3D;1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="5-3-项目代码修改"><a href="#5-3-项目代码修改" class="headerlink" title="5.3 项目代码修改"></a>5.3 项目代码修改</h3><p>因为网络访问的问题，我们需要将代码里有些地方进行修改。修改如下：</p>
+<p><strong>修改lanuch.py文件</strong></p>
 <ul>
-<li>登录openai官网：<a target="_blank" rel="noopener" href="https://platform.openai.com/account/api-keys">https://platform.openai.com/account/api-keys</a></li>
-<li>点击<code>create New secret key</code>创建一个key，拷贝下来</li>
-<li>没有chatGPT账号，或者没有key的可以找我，优惠价</li>
+<li>修改def prepare_environment()方法下的两处位置</li>
 </ul>
-<p><img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/wechat_business/8.png"></p>
-<h4 id="3-2-1-请求Openai功能开发"><a href="#3-2-1-请求Openai功能开发" class="headerlink" title="3.2.1 请求Openai功能开发"></a>3.2.1 请求Openai功能开发</h4><p>就一个POST请求，注意替换API key，示例代码如下。相关参数解释可以看官方接口文档<a target="_blank" rel="noopener" href="https://platform.openai.com/docs/api-reference/completions">completion文档</a></p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> header <span class="token operator">=</span> <span class="token class-name">Maps</span><span class="token punctuation">.</span><span class="token function">newHashMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token class-name">String</span> drawUrl <span class="token operator">=</span> <span class="token string">"https://api.openai.com/v1/completions"</span><span class="token punctuation">;</span>
-<span class="token class-name">String</span> cookie <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
-header<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"Authorization"</span><span class="token punctuation">,</span> <span class="token string">"Bearer 【替换API KEY】"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> body <span class="token operator">=</span> <span class="token class-name">Maps</span><span class="token punctuation">.</span><span class="token function">newHashMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-body<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"model"</span><span class="token punctuation">,</span> <span class="token string">"text-davinci-003"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-body<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"prompt"</span><span class="token punctuation">,</span> text<span class="token punctuation">)</span><span class="token punctuation">;</span>
-body<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"max_tokens"</span><span class="token punctuation">,</span> <span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-body<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"temperature"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token class-name">MediaType</span> JSON1 <span class="token operator">=</span> <span class="token class-name">MediaType</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">"application/json;charset=utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token class-name">RequestBody</span> requestBody <span class="token operator">=</span> <span class="token class-name">RequestBody</span><span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>JSON1<span class="token punctuation">,</span> JSON<span class="token punctuation">.</span><span class="token function">toJSONString</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<ol>
+<li><p>torch_command中修改<code>torch==1.13.1 torchvision==0.14.1</code>把原有的版本号数字后面的其他内容去掉</p>
+</li>
+<li><p>该方法下所有<code>https://github.com</code>开头的链接，前面都加上<code>https://ghproxy.com/</code>这样链接就变成如下格式了：<code>https://ghproxy.com/https://github.com/</code></p>
+</li>
+</ol>
+<p>如图所示</p>
+<p><img src="https://github.com/longbig/hexo-blogs/blob/master/source/img/ai/stable-diffusion-webui/7.png"></p>
+<h3 id="5-3-运行项目"><a href="#5-3-运行项目" class="headerlink" title="5.3 运行项目"></a>5.3 运行项目</h3><p>上面我们使用conda进入了虚拟环境，然后再运行项目即可，执行命令：</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 激活虚拟环境sd
+conda activate sd 
 
-<span class="token class-name">String</span> response <span class="token operator">=</span> <span class="token class-name">OkHttpUtils</span><span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span>drawUrl<span class="token punctuation">,</span> cookie<span class="token punctuation">,</span> requestBody<span class="token punctuation">,</span> header<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+# 进入到stable-diffusion-webui目录下
+cd stable-diffusion-webui
 
-<h3 id="3-3-回传消息给企业微信"><a href="#3-3-回传消息给企业微信" class="headerlink" title="3.3 回传消息给企业微信"></a>3.3 回传消息给企业微信</h3><p>上一步调了Openai的接口后，就得到了GPT对话的结果，现在要将结果回传到企业微信里，实现对话聊天，企业微信发送应用消息文档：<a target="_blank" rel="noopener" href="https://developer.work.weixin.qq.com/document/path/90236">发送应用消息</a></p>
-<p>具体步骤：</p>
-<ul>
-<li>先获取接口调用的accessToken，有效期2小时</li>
-<li>再通过accessToken，调应用消息推送接口，可配置具体要接收消息的人，群等等。</li>
-<li>需要用到企业id，获取方法往下看</li>
-<li>需要用到自建应用的secret</li>
-</ul>
-<h4 id="3-3-1-获取企业ID"><a href="#3-3-1-获取企业ID" class="headerlink" title="3.3.1 获取企业ID"></a>3.3.1 获取企业ID</h4><p><img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/wechat_business/9.png"></p>
-<h4 id="3-3-2-获取自建应用的secret"><a href="#3-3-2-获取自建应用的secret" class="headerlink" title="3.3.2 获取自建应用的secret"></a>3.3.2 获取自建应用的secret</h4><p><img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/chatgpt/wechat_business/10.png"></p>
-<p>示例代码：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">String</span> accessToken <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-    <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
-        accessToken <span class="token operator">=</span> <span class="token function">getAccessToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        log<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"sendMsg getAccessToken error,e=&#123;&#125;"</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token class-name">String</span> url <span class="token operator">=</span> <span class="token string">"https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token="</span> <span class="token operator">+</span> accessToken<span class="token punctuation">;</span>
-    <span class="token class-name">String</span> body <span class="token operator">=</span> <span class="token string">"&#123;\n"</span> <span class="token operator">+</span>
-            <span class="token string">"   \"touser\" : \""</span> <span class="token operator">+</span> touser <span class="token operator">+</span> <span class="token string">"\",\n"</span> <span class="token operator">+</span>
-            <span class="token string">"   \"msgtype\" : \"text\",\n"</span> <span class="token operator">+</span>
-            <span class="token string">"   \"agentid\" : 1000003,\n"</span> <span class="token operator">+</span>
-            <span class="token string">"   \"text\" : &#123;\n"</span> <span class="token operator">+</span>
-            <span class="token string">"       \"content\" : \""</span> <span class="token operator">+</span> msg <span class="token operator">+</span> <span class="token string">"\"\n"</span> <span class="token operator">+</span>
-            <span class="token string">"   &#125;,\n"</span> <span class="token operator">+</span>
-            <span class="token string">"   \"safe\":0,\n"</span> <span class="token operator">+</span>
-            <span class="token string">"   \"enable_id_trans\": 0,\n"</span> <span class="token operator">+</span>
-            <span class="token string">"   \"enable_duplicate_check\": 0,\n"</span> <span class="token operator">+</span>
-            <span class="token string">"   \"duplicate_check_interval\": 1800\n"</span> <span class="token operator">+</span>
-            <span class="token string">"&#125;"</span><span class="token punctuation">;</span>
-    <span class="token class-name">MediaType</span> JSON1 <span class="token operator">=</span> <span class="token class-name">MediaType</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">"application/json;charset=utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token class-name">RequestBody</span> requestBody <span class="token operator">=</span> <span class="token class-name">RequestBody</span><span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>JSON1<span class="token punctuation">,</span> body<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"send msg:&#123;&#125;"</span><span class="token punctuation">,</span> requestBody<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token class-name">OkHttpUtils</span><span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> requestBody<span class="token punctuation">,</span> <span class="token class-name">Maps</span><span class="token punctuation">.</span><span class="token function">newHashMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+# 运行项目
+python launch.py<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>到此所有开发工作都完成了，可以将服务部署试验功能了！！！</p>
+<p>这一步如果人品好的话，第一次就能全部正常运行完，运行完之后，出现<code>http://127.0.0.1:7860</code>字样说明运行成功了，浏览器打开这个地址就能开始愉快地玩耍了，玩耍方式自行探索哦~</p>
+<p><img src="https://github.com/longbig/hexo-blogs/blob/master/source/img/ai/stable-diffusion-webui/9.png"></p>
+<h2 id="6-相关问题"><a href="#6-相关问题" class="headerlink" title="6.相关问题"></a>6.相关问题</h2><h3 id="pip-install-r-requirements-txt时报错，有一些依赖没有安装上"><a href="#pip-install-r-requirements-txt时报错，有一些依赖没有安装上" class="headerlink" title="pip install -r requirements.txt时报错，有一些依赖没有安装上"></a>pip install -r requirements.txt时报错，有一些依赖没有安装上</h3><p>解决方法：手动安装一下依赖包</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">pip install 缺少的依赖包<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="7-模型下载及图片下载"><a href="#7-模型下载及图片下载" class="headerlink" title="7.模型下载及图片下载"></a>7.模型下载及图片下载</h2><p>文章里用到的模型和图片下载方式：公众号<code>卷福同学</code>内发关键词<code>AI绘画</code>获取</p>
+<p><img src="https://github.com/longbig/hexo-blogs/blob/master/source/img/ai/stable-diffusion-webui/11.png"></p>
 <h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><p>欢迎关注我的技术公众号：<strong>卷福同学</strong></p>
 <p>技术文章第一时间会在公众号上发布哦~</p>
 <p><img src="https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/wechat/%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.jpeg" alt="公众号"></p>
@@ -655,7 +605,7 @@ body<span class="token punctuation">.</span><span class="token function">put</sp
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://longbig.github.io/2023/02/19/ChatGPT%E6%8E%A5%E5%85%A5%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%90%E4%B8%BA%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA/">https://longbig.github.io/2023/02/19/ChatGPT%E6%8E%A5%E5%85%A5%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%90%E4%B8%BA%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA/</a>
+                    <a href="https://longbig.github.io/2023/02/26/AI%E7%BB%98%E7%94%BB-MAC%E5%AE%89%E8%A3%85Stable-Diffusion-webUI%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/">https://longbig.github.io/2023/02/26/AI%E7%BB%98%E7%94%BB-MAC%E5%AE%89%E8%A3%85Stable-Diffusion-webUI%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -860,9 +810,10 @@ body<span class="token punctuation">.</span><span class="token function">put</sp
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2023/02/26/AI%E7%BB%98%E7%94%BB-MAC%E5%AE%89%E8%A3%85Stable-Diffusion-webUI%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/">
                     <div class="card-image">
@@ -880,9 +831,9 @@ body<span class="token punctuation">.</span><span class="token function">put</sp
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -891,6 +842,7 @@ body<span class="token punctuation">.</span><span class="token function">put</sp
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -901,13 +853,13 @@ body<span class="token punctuation">.</span><span class="token function">put</sp
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/02/12/ChatGPT%E6%8E%A5%E5%85%A5%E4%B8%AA%E4%BA%BA%E5%BE%AE%E4%BF%A1/">
+                <a href="/2023/02/19/ChatGPT%E6%8E%A5%E5%85%A5%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%90%E4%B8%BA%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="ChatGPT接入个人微信">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="ChatGPT接入企业微信成为聊天机器人">
                         
-                        <span class="card-title">ChatGPT接入个人微信</span>
+                        <span class="card-title">ChatGPT接入企业微信成为聊天机器人</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -918,7 +870,7 @@ body<span class="token punctuation">.</span><span class="token function">put</sp
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-19
                             </span>
                         <span class="publish-author">
                             
