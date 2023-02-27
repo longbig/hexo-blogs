@@ -138,7 +138,7 @@ deploy:
     repository:
       github: git@github.com:longbig/longbig.github.io.git
       coding: git@github.com:longbig/hexo-blogs.git
-    branch: master
+    branch: main
   - type: baidu_url_submitter
 
 #百度普通收录 https://ziyuan.baidu.com/linksubmit/index

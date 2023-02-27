@@ -15,9 +15,9 @@ categories:
 
 ## 1.作品图
 
-![](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/ai/girl/1.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/ai/girl/1.png)
 
-![](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/ai/girl/3.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/ai/girl/3.png)
 
 ## 2.准备工作
 
@@ -39,7 +39,7 @@ pip install -r requirements_versions.txt
 
 这一步是安装Python项目运行所有需要的依赖，这步很大概率出现无法安装gfpgan的问题：Couldn't install gfpgan
 
-![](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/ai/sd/1.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/ai/sd/1.png)
 
 解决方法：
 
@@ -134,13 +134,13 @@ pip3 install -r requirements_versions.txt
 
 下载地址：https://civitai.com/models/6424/chilloutmix
 
-![](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/ai/sd/5.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/ai/sd/5.png)
 
 右上角Download下载，其他模型大家可自行在这个网站上探索，非常的多，这里推荐几个热门的:
 
 [korean-doll-likeness](https://civitai.com/models/7448/korean-doll-likeness)
 
-![](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/ai/sd/6.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/ai/sd/6.png)
 
 ### 4.2 安装模型
 
@@ -181,7 +181,7 @@ export PYTORCH_ENABLE_MPS_FALLBACK=1
 
 如图所示
 
-![](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/ai/sd/7.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/ai/sd/7.png)
 
 
 
@@ -202,7 +202,7 @@ python launch.py
 
 这一步如果人品好的话，第一次就能全部正常运行完，运行完之后，出现`http://127.0.0.1:7860`字样说明运行成功了，浏览器打开这个地址就能开始愉快地玩耍了，玩耍方式自行探索哦~
 
-![](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/ai/sd/9.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/ai/sd/9.png)
 
 ## 6.相关问题
 
@@ -218,7 +218,7 @@ pip install 缺少的依赖包
 
 文章里用到的模型和图片下载方式：公众号`卷福同学`内发关键词`AI绘画`获取
 
-![](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/ai/sd/11.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/ai/sd/11.png)
 
 ## 关于我
 
@@ -226,4 +226,4 @@ pip install 缺少的依赖包
 
 技术文章第一时间会在公众号上发布哦~
 
-![公众号](https://raw.githubusercontent.com/longbig/hexo-blogs/master/source/img/wechat/%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.jpeg)
+![公众号](https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/wechat/%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.jpeg)
