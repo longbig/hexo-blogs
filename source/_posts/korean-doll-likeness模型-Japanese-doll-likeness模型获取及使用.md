@@ -15,8 +15,6 @@ categories:
 
 所有需要的模型文件下载方式：关注公众号`卷福同学`，发送关键词`AI绘画`领取
 
-![公众号](https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/wechat/%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.jpeg)
-
 ## 1.模型
 
 今天一早起来打开C站，发现之前热门的几个doll模型都没有了，猜测是某些原因没有了的。现在首页能搜到的这个都不是之前热门的doll。。。
