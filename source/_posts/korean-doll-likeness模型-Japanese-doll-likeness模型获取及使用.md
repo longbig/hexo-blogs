@@ -1,5 +1,5 @@
 ---
-title: '# korean doll likeness模型|Japanese-doll-likeness模型获取及使用'
+title: 'korean doll likeness模型|Japanese-doll-likeness模型获取及使用'
 top: false
 cover: false
 toc: true
@@ -8,6 +8,7 @@ date: 2023-03-01 08:30:25
 password:
 summary:
 tags:
+img: /medias/featureimages/1.png
 categories:
 ---
 # korean doll likeness模型|Japanese-doll-likeness模型获取及使用
