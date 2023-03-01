@@ -11,7 +11,7 @@ tags:
 img: /medias/featureimages/1.png
 categories:
 ---
-# korean doll likeness模型|Japanese-doll-likeness模型获取及使用
+korean doll likeness模型|Japanese-doll-likeness模型获取及使用
 
 所有需要的模型文件下载方式都在这篇文章里了，大家往下看哦~
 
