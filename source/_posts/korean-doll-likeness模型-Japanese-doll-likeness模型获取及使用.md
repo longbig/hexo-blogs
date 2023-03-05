@@ -1,5 +1,5 @@
 ---
-title: 'korean doll likeness模型|Japanese-doll-likeness模型获取及使用'
+title: korean doll likeness模型|Japanese-doll-likeness模型获取及使用
 top: false
 cover: false
 toc: true
