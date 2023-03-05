@@ -56,6 +56,8 @@ categories:
 
 缺点：可能某天就没了
 
+![](https://github.com/longbig/hexo-blogs/blob/main/source/img/ai/girl/1.png)
+
 
 ## 关于我
 
