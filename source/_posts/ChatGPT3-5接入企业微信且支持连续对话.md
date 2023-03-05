@@ -66,7 +66,7 @@ PC端登录地址：https://work.weixin.qq.com/wework_admin/frame#apps
 
 这一步我随机生成这两个字段的值，只作为文章里演示啊，图上标注了项目代码里需要改的配置名称。拿到上面5个信息后，替换代码里的对应的5个字段
 
-chatGPT的账号API key自行创建，不会的可以搜索找找
+chatGPT的账号API key自行创建，不会的可以联系我购买
 
 ![](https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/chatgpt/gpt3-5/7.png)
 
