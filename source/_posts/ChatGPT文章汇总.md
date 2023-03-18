@@ -25,6 +25,8 @@ categories:
 ### 2.做成聊天机器人
 
 * [ChatGPT接入个人微信](https://longbig.github.io/2023/02/12/ChatGPT%E6%8E%A5%E5%85%A5%E4%B8%AA%E4%BA%BA%E5%BE%AE%E4%BF%A1/)
+  
+* [ChatGPT3.5接入企业微信，可连续对话](https://longbig.github.io/2023/03/05/ChatGPT3-5%E6%8E%A5%E5%85%A5%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E4%B8%94%E6%94%AF%E6%8C%81%E8%BF%9E%E7%BB%AD%E5%AF%B9%E8%AF%9D/)
 
 
 ## 关于我
