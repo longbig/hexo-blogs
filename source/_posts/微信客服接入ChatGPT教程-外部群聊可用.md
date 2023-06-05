@@ -26,6 +26,8 @@ categories:
 
 ## 2.微信客服配置
 
+微信客服开发文档：[微信客服开发](https://developer.work.weixin.qq.com/document/path/94670)
+
 登录企业微信管理后台，配置微信客服，地址：https://work.weixin.qq.com/wework_admin/frame#/app/servicer
 
 ### 2.1配置获取
