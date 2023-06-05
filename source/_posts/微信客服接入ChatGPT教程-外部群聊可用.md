@@ -18,7 +18,7 @@ categories:
 
 先看聊天效果
 
-<img src="/Users/yuyunlong/Pictures/博客/微信客服ChatGPT/0_3.png" style="zoom: 50%;" />
+<img src="https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/chatgpt/wechat_kefu/0_3.png" style="zoom: 50%;" />
 
 从群聊获取到客服名片，然后和客服机器人私聊对话，就和ChatGPT对话一样的效果。
 
@@ -32,11 +32,11 @@ categories:
 
 获取应用程序需要的配置，对应程序里的配置名如图：
 
-<img src="/Users/yuyunlong/Pictures/博客/微信客服ChatGPT/0_4.png" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/chatgpt/wechat_kefu/0_4.png" style="zoom:50%;" />
 
-<img src="/Users/yuyunlong/Pictures/博客/微信客服ChatGPT/0_5.png" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/chatgpt/wechat_kefu/0_5.png" style="zoom:50%;" />
 
-![](/Users/yuyunlong/Pictures/博客/微信客服ChatGPT/0_6.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/chatgpt/wechat_kefu/0_6.png)
 
 上面那些配置先拷贝下来，我们等会要用
 
@@ -46,7 +46,7 @@ categories:
 
 按图里的位置建个客服账号即可，头像名称自己设置
 
-![](/Users/yuyunlong/Pictures/博客/微信客服ChatGPT/0_7.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/chatgpt/wechat_kefu/0_7.png)
 
 
 
@@ -54,9 +54,9 @@ categories:
 
 页面滑到最下面，我们将刚刚创建的客服账号通过API的方式进行管理。客服账号需要配置人工接待人员哦~
 
-![](/Users/yuyunlong/Pictures/博客/微信客服ChatGPT/0_8.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/chatgpt/wechat_kefu/0_8.png)
 
-![](/Users/yuyunlong/Pictures/博客/微信客服ChatGPT/0_9.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/chatgpt/wechat_kefu/0_9.png)
 
 
 
@@ -70,7 +70,7 @@ categories:
 
 确实没ChatGPT账号的友友们，也可以公号内联系购买
 
-![](/Users/yuyunlong/Pictures/博客/微信客服ChatGPT/0_10.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/chatgpt/wechat_kefu/0_10.png)
 
 ### 3.2应用发布
 
@@ -84,7 +84,7 @@ nohup java -jar application.jar >log.txt &
 
 然后`tail -f log.txt`查看启动日志，看到`Started MultiFunctionApplication in 3.297 seconds`类似字样的日志说明启动成功了。详细使用部署步骤可参考我之前写的文章：[【奶奶看了都会】ChatGPT3.5接入企业微信，可连续对话](https://zhuanlan.zhihu.com/p/611555021)
 
-![](/Users/yuyunlong/Pictures/博客/微信客服ChatGPT/0_11.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/chatgpt/wechat_kefu/0_11.png)
 
 
 
@@ -96,19 +96,19 @@ URL格式为：`http://[替换为你的服务器公网IP]:8080/receiveMsgFromWec
 
 注意认证的企业微信不能用IP，需要用备案域名，DNS解析到你的服务器上
 
-![](/Users/yuyunlong/Pictures/博客/微信客服ChatGPT/0_12.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/chatgpt/wechat_kefu/0_12.png)
 
 ## 5.创建群聊
 
 通过`升级服务` 转到`客户群服务`配置里，新增一个外部群，然后手机端登录企业微信，管理员在这个群开启`客服助理`功能。这样我们的微信群聊里就有这个客服机器人了
 
-![](/Users/yuyunlong/Pictures/博客/微信客服ChatGPT/0_13.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/chatgpt/wechat_kefu/0_13.png)
 
-![](/Users/yuyunlong/Pictures/博客/微信客服ChatGPT/0_14.png)
+![](https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/chatgpt/wechat_kefu/0_14.png)
 
 ## 6.聊天效果
 
-<img src="/Users/yuyunlong/Pictures/博客/微信客服ChatGPT/0_3.png" style="zoom:33%;" />
+<img src="https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/chatgpt/wechat_kefu/0_3.png" style="zoom:33%;" />
 
 
 
