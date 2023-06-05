@@ -24,7 +24,7 @@ categories:
 
 ### 2.做成聊天机器人
 
-* [【奶奶看了也不会】微信群聊（微信客服）接入ChatGPT教程](https://longbig.github.io/2023/06/05/%E5%BE%AE%E4%BF%A1%E5%AE%A2%E6%9C%8D%E6%8E%A5%E5%85%A5ChatGPT%E6%95%99%E7%A8%8B-%E5%A4%96%E9%83%A8%E7%BE%A4%E8%81%8A%E5%8F%AF%E7%94%A8/)
+* [【奶奶看了也不会】微信群聊(微信客服)接入ChatGPT教程](https://longbig.github.io/2023/06/05/%E5%BE%AE%E4%BF%A1%E5%AE%A2%E6%9C%8D%E6%8E%A5%E5%85%A5ChatGPT%E6%95%99%E7%A8%8B-%E5%A4%96%E9%83%A8%E7%BE%A4%E8%81%8A%E5%8F%AF%E7%94%A8/)
   
 * [ChatGPT3.5接入企业微信，可连续对话](https://longbig.github.io/2023/03/05/ChatGPT3-5%E6%8E%A5%E5%85%A5%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E4%B8%94%E6%94%AF%E6%8C%81%E8%BF%9E%E7%BB%AD%E5%AF%B9%E8%AF%9D/)
 
