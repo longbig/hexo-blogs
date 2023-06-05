@@ -10,7 +10,7 @@ summary:
 tags:
 categories:
 ---
-# 【奶奶看了也不会】微信群聊（微信客服）接入ChatGPT教程
+# 【奶奶看了也不会】微信群聊(微信客服)接入ChatGPT教程
 
 ## 1.聊天效果展示
 
