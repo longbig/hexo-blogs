@@ -123,11 +123,18 @@ chmod 777 llama
 //2.修改example_chat_completion.py文件里的参数
 ckpt_dir: str = "/home/user/imported_models/llama-2-7b-chat/Llama-2-7b-chat/",
 tokenizer_path: str = "/home/user/imported_models/llama-2-7b-chat/Llama-2-7b-chat/tokenizer.model",
+
+//3.运行对话脚本
+torchrun --nproc_per_node 1 example_chat_completion.py
 ```
 
 ![](https://github.com/longbig/hexo-blogs/blob/main/themes/hexo-theme-matery/source/medias/featureimages/7.png)
 
 这里我修改提示语让它用中文回答，对话效果如下：
+
+```shell
+torchrun --nproc_per_node 1 example_chat_completion.py
+```
 
 ![](https://github.com/longbig/hexo-blogs/blob/main/themes/hexo-theme-matery/source/medias/featureimages/7_1.png)
 
