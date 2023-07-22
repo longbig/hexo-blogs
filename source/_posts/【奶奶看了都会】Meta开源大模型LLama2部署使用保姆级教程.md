@@ -17,7 +17,7 @@ img: /medias/featureimages/4.png
 
 就在7月19日，MetaAI开源了LLama2大模型，Meta 首席科学家、图灵奖获得者 Yann LeCun在推特上表示Meta 此举可能将改变大模型行业的竞争格局。一夜之间，大模型格局再次发生巨变。
 
-![](https://github.com/longbig/hexo-blogs/blob/main/themes/hexo-theme-matery/source/medias/featureimages/1.png)
+![](https://github.com/longbig/hexo-blogs/blob/main/source/img/llama2/1.png)
 
 推文上列了Llama2的网站和论文，小卷给大家贴一下，感兴趣的友友可以自己看看
 
@@ -33,13 +33,13 @@ Llama官网的说明是Llama2下一代开源大语言模型，可免费用于学
 
 目前模型有7B、13B、70B三种规格，预训练阶段使用了2万亿Token，SFT阶段使用了超过10w数据，人类偏好数据超过100w。
 
-![](https://github.com/longbig/hexo-blogs/blob/main/themes/hexo-theme-matery/source/medias/featureimages/2.png)
+![](https://github.com/longbig/hexo-blogs/blob/main/source/img/llama2/2.png)
 
 另外大家最关心的Llama2和ChatGPT模型的效果对比，在论文里也有提到，
 
 对比GPT-4，Llama2评估结果更优，绿色部分表示Llama2优于GPT4的比例
 
-![](https://github.com/longbig/hexo-blogs/blob/main/themes/hexo-theme-matery/source/medias/featureimages/3.png)
+![](https://github.com/longbig/hexo-blogs/blob/main/source/img/llama2/3.png)
 
 虽然中文的占比只有0.13%，但后续会有一大推中文扩充词表预训练&领域数据微调的模型被国人放出。这不才开源几天而已，GIthub上就已经有基于Llama2的中文大模型了。。。
 
@@ -59,7 +59,7 @@ Llama官网的说明是Llama2下一代开源大语言模型，可免费用于学
 
 创建一个工作空间，运行环境镜像挂载公有镜像：pytorch: official-torch2.0-cu1117。选择预训练模型：llama-2-7b 和 llama-2-7b-chat。然后创建实例
 
-![](https://github.com/longbig/hexo-blogs/blob/main/themes/hexo-theme-matery/source/medias/featureimages/4.png)
+![](https://github.com/longbig/hexo-blogs/blob/main/source/img/llama2/4.png)
 
 ### 3.2下载代码
 
@@ -79,7 +79,7 @@ sudo git clone https://github.com/facebookresearch/llama.git
 
 下载完成后，会多一个`llama`目录
 
-![](https://github.com/longbig/hexo-blogs/blob/main/themes/hexo-theme-matery/source/medias/featureimages/5.png)
+![](https://github.com/longbig/hexo-blogs/blob/main/source/img/llama2/5.png)
 
 ### 3.3运行脚本
 
@@ -108,7 +108,7 @@ torchrun --nproc_per_node 1 example_text_completion.py \
 
 文本补齐效果示例：
 
-![](https://github.com/longbig/hexo-blogs/blob/main/themes/hexo-theme-matery/source/medias/featureimages/6.png)
+![](https://github.com/longbig/hexo-blogs/blob/main/source/img/llama2/6.png)
 
 上面的例子是在python脚本里写了一段话，让模型补全后面的内容。
 
@@ -128,7 +128,7 @@ tokenizer_path: str = "/home/user/imported_models/llama-2-7b-chat/Llama-2-7b-cha
 torchrun --nproc_per_node 1 example_chat_completion.py
 ```
 
-![](https://github.com/longbig/hexo-blogs/blob/main/themes/hexo-theme-matery/source/medias/featureimages/7.png)
+![](https://github.com/longbig/hexo-blogs/blob/main/source/img/llama2/7.png)
 
 这里我修改提示语让它用中文回答，对话效果如下：
 
@@ -136,7 +136,7 @@ torchrun --nproc_per_node 1 example_chat_completion.py
 torchrun --nproc_per_node 1 example_chat_completion.py
 ```
 
-![](https://github.com/longbig/hexo-blogs/blob/main/themes/hexo-theme-matery/source/medias/featureimages/7_1.png)
+![](https://github.com/longbig/hexo-blogs/blob/main/source/img/llama2/7_1.png)
 
 说明：目前官方还没有提供UI界面或是API脚本代码给咱使用，还没法进行对话交互，如果有懂python的友友，可以自行加个UI界面，欢迎大家留言讨论。
 
@@ -148,13 +148,13 @@ llama代码里有`download.sh`脚本可以下载其他模型，但是下载需�
 
 MetaAI下载模型页地址：https://ai.meta.com/llama/#download-the-model
 
-![](https://github.com/longbig/hexo-blogs/blob/main/themes/hexo-theme-matery/source/medias/featureimages/8.png)
+![](https://github.com/longbig/hexo-blogs/blob/main/source/img/llama2/8.png)
 
 点击Download后，要求填入一些信息和邮箱，提交后会给你的邮箱发一个下载URL，注意这个是你自己的下载链接哦~
 
 下图是小卷邮箱里收到的模型下载链接
 
-![](https://github.com/longbig/hexo-blogs/blob/main/themes/hexo-theme-matery/source/medias/featureimages/9.png)
+![](https://github.com/longbig/hexo-blogs/blob/main/source/img/llama2/9.png)
 
 **2.下载模型**
 
@@ -166,7 +166,7 @@ sudo bash download.sh
 
 接着按照提示粘贴下载URL和选择要下载的模型
 
-![](https://github.com/longbig/hexo-blogs/blob/main/themes/hexo-theme-matery/source/medias/featureimages/10.png)
+![](https://github.com/longbig/hexo-blogs/blob/main/source/img/llama2/10.png)
 
 ## **总结**
 
