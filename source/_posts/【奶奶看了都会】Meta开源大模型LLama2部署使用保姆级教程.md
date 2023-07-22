@@ -168,10 +168,10 @@ sudo bash download.sh
 
 ![](https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/llama2/10.png)
 
-## **总结**
+## 关于我
 
-对于国内大模型使用来说，随着开源可商用的模型越来越多，国内大模型肯定会再次迎来发展机遇。
+欢迎关注我的技术公众号：**卷福同学**
 
-**文章原创不易，欢迎多多转发，点赞，关注**
+技术文章第一时间会在公众号上发布哦~
 
-也欢迎关注我的公众号**卷福同学**，技术问题都可在公众号内交流
+![公众号](https://raw.githubusercontent.com/longbig/hexo-blogs/main/source/img/wechat/%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.jpeg)
