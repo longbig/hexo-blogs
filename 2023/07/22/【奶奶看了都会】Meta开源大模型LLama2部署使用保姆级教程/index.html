@@ -517,10 +517,15 @@ chmod 777 llama
 
 &#x2F;&#x2F;2.修改example_chat_completion.py文件里的参数
 ckpt_dir: str &#x3D; &quot;&#x2F;home&#x2F;user&#x2F;imported_models&#x2F;llama-2-7b-chat&#x2F;Llama-2-7b-chat&#x2F;&quot;,
-tokenizer_path: str &#x3D; &quot;&#x2F;home&#x2F;user&#x2F;imported_models&#x2F;llama-2-7b-chat&#x2F;Llama-2-7b-chat&#x2F;tokenizer.model&quot;,<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+tokenizer_path: str &#x3D; &quot;&#x2F;home&#x2F;user&#x2F;imported_models&#x2F;llama-2-7b-chat&#x2F;Llama-2-7b-chat&#x2F;tokenizer.model&quot;,
+
+&#x2F;&#x2F;3.运行对话脚本
+torchrun --nproc_per_node 1 example_chat_completion.py<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="https://github.com/longbig/hexo-blogs/blob/main/themes/hexo-theme-matery/source/medias/featureimages/7.png"></p>
 <p>这里我修改提示语让它用中文回答，对话效果如下：</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">torchrun --nproc_per_node 1 example_chat_completion.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://github.com/longbig/hexo-blogs/blob/main/themes/hexo-theme-matery/source/medias/featureimages/7_1.png"></p>
 <p>说明：目前官方还没有提供UI界面或是API脚本代码给咱使用，还没法进行对话交互，如果有懂python的友友，可以自行加个UI界面，欢迎大家留言讨论。</p>
 <h2 id="4-下载更多模型"><a href="#4-下载更多模型" class="headerlink" title="4.下载更多模型"></a>4.下载更多模型</h2><p>llama代码里有<code>download.sh</code>脚本可以下载其他模型，但是下载需要的URL需要自行获取。下载步骤如下：</p>
